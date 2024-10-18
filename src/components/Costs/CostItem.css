@@ -5,6 +5,7 @@
   padding: 0.7rem;
   margin: 1rem 0;
   background-color: #bd8025;
+  transition: all 0.3s;
 }
 
 .cost-item__description {
@@ -56,4 +57,9 @@
     font-size: 1.25rem;
     padding: 0.5rem 1.5rem;
   }
+}
+
+.cost-item:hover {
+  transform: scale(1.01);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
 }
