@@ -3,9 +3,9 @@ import "./CostForm.css";
 
 const CostForm = () => {
   // 1 way
-  const [name, setName] = useState("");
-  const [amount, setAmount] = useState("");
-  const [date, setDate] = useState("");
+  const [inputName, setInputName] = useState("");
+  const [inputAmount, setInputAmount] = useState("");
+  const [inputDate, setInputDate] = useState("");
 
   //<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>
   // 2 way
@@ -30,7 +30,7 @@ const CostForm = () => {
   // 1 way
   const inputChangeHandler = (e, set) => {
     set(e.target.value);
-    console.log(name, amount, date);
+    console.log(inputName, inputAmount, inputDate);
   };
   // const nameChangeHandler = (e) => {
   //   setName(e.target.value);
@@ -42,15 +42,31 @@ const CostForm = () => {
   //   setDate(e.target.value);
   // };
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    const costData = {
+      name: inputName,
+      amount: inputAmount,
+      date: new Date(inputDate),
+    };
+
+    setInputName("");
+    setInputAmount("");
+    setInputDate("");
+    console.log(costData);
+  };
+
   return (
-    <form action="">
+    <form onSubmit={submitHandler}>
       <div className="new-cost__controls">
         <div className="new-cost__control">
           <label htmlFor="name">Name</label>
           <input
             id="name"
             type="text"
-            onChange={(e) => inputChangeHandler(e, setName)}
+            value={inputName}
+            onChange={(e) => inputChangeHandler(e, setInputName)}
           />
         </div>
         <div className="new-cost__control">
@@ -60,7 +76,8 @@ const CostForm = () => {
             type="number"
             min={0.01}
             step={0.01}
-            onChange={(e) => inputChangeHandler(e, setAmount)}
+            value={inputAmount}
+            onChange={(e) => inputChangeHandler(e, setInputAmount)}
           />
         </div>
         <div className="new-cost__control">
@@ -69,7 +86,8 @@ const CostForm = () => {
             id="date"
             type="date"
             min={2024 - 10 - 18}
-            onChange={(e) => inputChangeHandler(e, setDate)}
+            value={inputDate}
+            onChange={(e) => inputChangeHandler(e, setInputDate)}
           />
         </div>
         <div className="new-cost__actions">

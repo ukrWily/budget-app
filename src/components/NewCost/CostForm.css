@@ -18,7 +18,8 @@
 
 .new-cost__control > input:focus {
   transform: scale(1.01);
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  outline: 1px solid salmon;
 }
 
 .new-cost__control input {
