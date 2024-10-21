@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./CostForm.css";
 
-const CostForm = () => {
+const CostForm = (props) => {
   // 1 way
   const [inputName, setInputName] = useState("");
   const [inputAmount, setInputAmount] = useState("");
@@ -30,7 +30,6 @@ const CostForm = () => {
   // 1 way
   const inputChangeHandler = (e, set) => {
     set(e.target.value);
-    console.log(inputName, inputAmount, inputDate);
   };
   // const nameChangeHandler = (e) => {
   //   setName(e.target.value);
@@ -51,10 +50,10 @@ const CostForm = () => {
       date: new Date(inputDate),
     };
 
+    props.onSaveCostData(costData);
     setInputName("");
     setInputAmount("");
     setInputDate("");
-    console.log(costData);
   };
 
   return (
