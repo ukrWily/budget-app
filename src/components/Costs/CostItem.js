@@ -7,7 +7,7 @@ function CostItem(props) {
     <Card className="cost-item">
       <CostDate date={props.data.date} />
       <div className="cost-item__description">
-        <h2>{props.data.description}</h2>
+        <h2>{props.data.name}</h2>
         <div className="cost-item__price">${props.data.amount}</div>
       </div>
     </Card>

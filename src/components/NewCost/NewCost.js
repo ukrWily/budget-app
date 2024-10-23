@@ -8,7 +8,7 @@ const NewCost = (props) => {
       id: Math.random().toString(),
     };
 
-    props.onSaveCostData(costData);
+    props.onAddCost(costData);
     console.log(costData);
   };
 

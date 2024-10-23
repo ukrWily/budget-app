@@ -9,13 +9,12 @@ function Costs(props) {
 
   const changeYearHandler = (year) => {
     setYear(year);
-    console.log(year);
   };
 
   return (
     <Card className="costs">
       <CostsFilter onChangeYear={changeYearHandler} year={year} />
-      {props.data.map((item, i) => {
+      {props.costs.map((item, i) => {
         return <CostItem data={item} key={i} />;
       })}
     </Card>
