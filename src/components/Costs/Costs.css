@@ -5,3 +5,16 @@
   width: 70rem;
   max-width: 95%;
 }
+.not-found {
+  text-align: center;
+  font-size: 35px;
+  color: crimson;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  animation: colored 1.2s infinite;
+}
+@keyframes colored {
+  50% {
+    color: rgb(187, 114, 129);
+    text-shadow: 5px 5px 7px rgba(0, 0, 0, 0.8);
+  }
+}

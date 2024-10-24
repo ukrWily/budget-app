@@ -11,10 +11,15 @@ function Costs(props) {
     setYear(year);
   };
 
+  const filteredCosts = props.costs.filter(
+    (item) => new Date(item.date).getFullYear() === +year
+  );
+
   return (
     <Card className="costs">
       <CostsFilter onChangeYear={changeYearHandler} year={year} />
-      {props.costs.map((item, i) => {
+      {filteredCosts.length === 0 && <h2 className="not-found">Not Found</h2>}
+      {filteredCosts.map((item, i) => {
         return <CostItem data={item} key={i} />;
       })}
     </Card>
