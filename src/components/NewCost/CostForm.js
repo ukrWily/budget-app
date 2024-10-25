@@ -6,6 +6,7 @@ const CostForm = (props) => {
   const [inputName, setInputName] = useState("");
   const [inputAmount, setInputAmount] = useState("");
   const [inputDate, setInputDate] = useState("");
+  const [hidden, setHidden] = useState(true);
 
   //<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<{<>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>}>
   // 2 way
@@ -55,46 +56,66 @@ const CostForm = (props) => {
     setInputName("");
     setInputAmount("");
     setInputDate("");
+
+    hiddenElemHandle();
+  };
+
+  const hiddenElemHandle = () => {
+    setHidden((prevHidden) => !prevHidden);
+
+    setInputName("");
+    setInputAmount("");
+    setInputDate("");
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <div className="new-cost__controls">
-        <div className="new-cost__control">
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            type="text"
-            value={inputName}
-            onChange={(e) => inputChangeHandler(e, setInputName)}
-          />
-        </div>
-        <div className="new-cost__control">
-          <label htmlFor="amount">Amount</label>
-          <input
-            id="amount"
-            type="number"
-            min={0.01}
-            step={0.01}
-            value={inputAmount}
-            onChange={(e) => inputChangeHandler(e, setInputAmount)}
-          />
-        </div>
-        <div className="new-cost__control">
-          <label htmlFor="date">Date</label>
-          <input
-            id="date"
-            type="date"
-            min={2024 - 10 - 18}
-            value={inputDate}
-            onChange={(e) => inputChangeHandler(e, setInputDate)}
-          />
-        </div>
-        <div className="new-cost__actions">
-          <button type="submit"> Add Flow</button>
-        </div>
-      </div>
-    </form>
+    <>
+      {hidden && (
+        <button className="add-button" onClick={hiddenElemHandle}>
+          Add new cost
+        </button>
+      )}
+      {!hidden && (
+        <form onSubmit={submitHandler} className="form">
+          <div className="new-cost__controls">
+            <div className="new-cost__control">
+              <label htmlFor="name">Name</label>
+              <input
+                id="name"
+                type="text"
+                value={inputName}
+                onChange={(e) => inputChangeHandler(e, setInputName)}
+              />
+            </div>
+            <div className="new-cost__control">
+              <label htmlFor="amount">Amount</label>
+              <input
+                id="amount"
+                type="number"
+                min={0.01}
+                step={0.01}
+                value={inputAmount}
+                onChange={(e) => inputChangeHandler(e, setInputAmount)}
+              />
+            </div>
+            <div className="new-cost__control">
+              <label htmlFor="date">Date</label>
+              <input
+                id="date"
+                type="date"
+                min={2024 - 10 - 18}
+                value={inputDate}
+                onChange={(e) => inputChangeHandler(e, setInputDate)}
+              />
+            </div>
+            <div className="new-cost__actions">
+              <button type="submit"> Add Flow</button>
+              <button onClick={() => hiddenElemHandle()}>Cancel</button>
+            </div>
+          </div>
+        </form>
+      )}
+    </>
   );
 };
 

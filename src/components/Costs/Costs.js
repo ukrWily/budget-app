@@ -16,13 +16,15 @@ function Costs(props) {
   );
 
   return (
-    <Card className="costs">
-      <CostsFilter onChangeYear={changeYearHandler} year={year} />
-      {filteredCosts.length === 0 && <h2 className="not-found">Not Found</h2>}
-      {filteredCosts.map((item, i) => {
-        return <CostItem data={item} key={i} />;
-      })}
-    </Card>
+    <div>
+      <Card className="costs">
+        <CostsFilter onChangeYear={changeYearHandler} year={year} />
+        {filteredCosts.length === 0 && <h2 className="not-found">Not Found</h2>}
+        {filteredCosts.map((item, i) => {
+          return <CostItem data={item} key={i} />;
+        })}
+      </Card>
+    </div>
   );
 }
 
